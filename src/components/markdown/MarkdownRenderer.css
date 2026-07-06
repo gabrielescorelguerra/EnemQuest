@@ -1,0 +1,9 @@
+.markdown img {
+  display: block;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+}
+
+.markdown p {
+  text-align: left;
+}

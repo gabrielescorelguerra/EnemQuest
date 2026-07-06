@@ -13,10 +13,18 @@
   --color-secondary-shadow: rgba(160, 160, 160, 0.2);
   --color-secondary-shadow-hover: rgba(101, 101, 101, 0.2);
 
+  --color-correct-start: #90e165;
+  --color-correct-end: #62b834;
+  --color-wrong-start: #e16565;
+  --color-wrong-end: #b83434;
+
   --shadow-primary: 0 10px 20px -3px var(--color-primary-shadow);
   --shadow-primary-hover: 0 10px 20px -3px var(--color-primary-shadow);
   --shadow-secondary: 0 8px 20px 2px var(--color-secondary-shadow);
   --shadow-secodary-hover: 0 8px 20px 2px var(--color-secondary-shadow-hover);
+
+  --shadow-correct: 0 0px 10px 0px var(--color-correct-start);
+  --shadow-wrong: 0 0px 10px 0px var(--color-wrong-start);
 
   --text-title: 'text-base';
 }
@@ -24,6 +32,7 @@
 body {
   color: var(--color-text);
 
-  font-family: var(--font-sans);
+  font-family: sans-serif;
+  font-weight: var(--font-weight-normal);
   font-size: var(--text-base);
 }
