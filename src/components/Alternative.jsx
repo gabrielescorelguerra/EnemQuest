@@ -23,7 +23,7 @@ export default function Alternative({
     wrong: 'text-white from-wrong-start to-wrong-end shadow-wrong',
   }
 
-  const onlyNumberDot = /^\d+\.$/.test(text.trim())
+  const onlyNumberDot = text ? /^\d+\.$/.test(text.trim()) : ''
 
   return (
     <>
