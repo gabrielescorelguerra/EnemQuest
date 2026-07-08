@@ -43,7 +43,7 @@ function QuestionPage() {
         <h1 className='font-bold'>EnemQUEST</h1>
         <div className='flex gap-2'>
           <Link
-            to={'/history'}
+            to={'/auth/login'}
             className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
           >
             <History className='h-10' />

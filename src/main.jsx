@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage.jsx'
 import '@fontsource/inter'
 import NotFoundPage from './pages/NotFoundPage'
+import AuthPage from './pages/AuthPage'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/*',
     element: <NotFoundPage />,
+  },
+  {
+    path: '/auth/:mode',
+    element: <AuthPage />,
   },
 ])
 
