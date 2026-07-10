@@ -8,6 +8,7 @@ import HistoryPage from './pages/HistoryPage.jsx'
 import '@fontsource/inter'
 import NotFoundPage from './pages/NotFoundPage'
 import AuthPage from './pages/AuthPage'
+import { AuthContextProvider } from './context/AuthContext.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </StrictMode>
 )

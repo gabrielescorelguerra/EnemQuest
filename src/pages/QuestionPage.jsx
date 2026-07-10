@@ -40,7 +40,12 @@ function QuestionPage() {
   return (
     <div className='flex flex-col gap-8 bg-fixed bg-linear-to-b from-bg-start to-bg-end pt-2 pb-10 px-4'>
       <header className='flex flex-row justify-between items-center'>
-        <h1 className='font-bold'>EnemQUEST</h1>
+        <Link
+          to={'/'}
+          className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
+        >
+          <h1 className='font-bold'>EnemQUEST</h1>
+        </Link>
         <div className='flex gap-2'>
           <Link
             to={'/auth/login'}

@@ -1,4 +1,11 @@
-export default function Button({ children, size = 'md', variant = 'secondary', onClick }) {
+export default function Button({
+  children,
+  size = 'md',
+  variant = 'secondary',
+  disabled = false,
+  submit,
+  onClick,
+}) {
   const sizes = {
     sm: 'py-2 px-4 w-20 text-sm',
     md: 'py-3 px-5 w-45 text-base',
@@ -16,6 +23,8 @@ export default function Button({ children, size = 'md', variant = 'secondary', o
     <button
       onClick={onClick}
       className={`${sizes[size]} ${variantClasses[variant]} rounded-full transition duration-800 hover:cursor-pointer`}
+      type={submit ? 'submit' : 'button'}
+      disabled={disabled}
     >
       {children}
     </button>
