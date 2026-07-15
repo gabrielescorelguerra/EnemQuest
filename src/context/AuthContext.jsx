@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   const [session, setSession] = useState(undefined)
 
   // Sign up function
-  const signUpNewUser = async ({ email, password }) => {
+  const signUpNewUser = async (email, password) => {
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   // Sign in
-  const signInUser = async ({ email, password }) => {
+  const signInUser = async (email, password) => {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email,

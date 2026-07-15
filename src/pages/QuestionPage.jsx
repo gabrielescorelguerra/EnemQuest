@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import Button from '@/components/Button'
 
 import { History, Moon } from 'lucide-react'
+import { UserAuth } from '@/context/AuthContext'
 
 function QuestionPage() {
   // useStates
@@ -16,6 +17,9 @@ function QuestionPage() {
   const [selectedAlternative, setSelectedAlternative] = useState('') // marca se alguma alternativa está selecionada
   const [showAnswer, setShowAnswer] = useState(false) // marca se está mostrando a resposta
   const [loading, setLoading] = useState(true) // marca se a questão ainda está carregando
+
+  // autenticação
+  const { session } = UserAuth()
 
   // navegação
   const navigate = useNavigate()
@@ -48,7 +52,7 @@ function QuestionPage() {
         </Link>
         <div className='flex gap-2'>
           <Link
-            to={'/auth/login'}
+            to={session ? '/history' : '/auth/login'}
             className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
           >
             <History className='h-10' />

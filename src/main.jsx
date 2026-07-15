@@ -9,6 +9,7 @@ import '@fontsource/inter'
 import NotFoundPage from './pages/NotFoundPage'
 import AuthPage from './pages/AuthPage'
 import { AuthContextProvider } from './context/AuthContext.jsx'
+import PrivateRoute from './components/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,13 @@ const router = createBrowserRouter([
     element: <QuestionPage />,
   },
   {
-    path: '/history',
-    element: <HistoryPage />,
+    element: <PrivateRoute />,
+    children: [
+      {
+        path: '/history',
+        element: <HistoryPage />,
+      },
+    ],
   },
   {
     path: '/*',

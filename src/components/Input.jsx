@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Input({ icon: Icon, type, placeholder, autoComplete }) {
+export default function Input({ icon: Icon, type, placeholder, autoComplete, onChange }) {
   const [focus, setFocus] = useState(false)
 
   return (
@@ -17,6 +17,7 @@ export default function Input({ icon: Icon, type, placeholder, autoComplete }) {
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         autoComplete={autoComplete}
+        onChange={onChange}
       />
     </div>
   )
