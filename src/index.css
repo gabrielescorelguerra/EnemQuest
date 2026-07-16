@@ -23,8 +23,8 @@
   --shadow-secondary: 0 8px 20px 2px var(--color-secondary-shadow);
   --shadow-secodary-hover: 0 8px 20px 2px var(--color-secondary-shadow-hover);
 
-  --shadow-correct: 0 0px 10px 0px var(--color-correct-start);
-  --shadow-wrong: 0 0px 10px 0px var(--color-wrong-start);
+  --shadow-correct: 0 8px 20px 2px color-mix(in srgb, var(--color-correct-start) 50%, transparent);
+  --shadow-wrong: 0 8px 20px 2px color-mix(in srgb, var(--color-wrong-start) 50%, transparent);
 
   --text-title: 'text-base';
 }

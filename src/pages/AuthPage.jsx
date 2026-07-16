@@ -4,6 +4,7 @@ import Button from '@/components/Button'
 
 import { AtSign } from 'lucide-react'
 import { Lock } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -56,15 +57,26 @@ function AuthPage() {
   const isLogin = mode === 'login'
 
   return (
-    <>
-      <main className='flex flex-col items-center justify-center gap-10 h-screen bg-linear-to-b from-bg-start to-bg-end'>
+    <div className='flex flex-col h-screen gap-8 bg-fixed bg-linear-to-b from-bg-start to-bg-end pt-2 pb-10 px-4'>
+      <header className='flex flex-row justify-between items-center'>
+        <div className='flex gap-2'>
+          <button
+            className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
+            onClick={() => navigate(-1)}
+            title='Voltar'
+          >
+            <ArrowLeft className='h-10' strokeWidth={2} />
+          </button>
+        </div>
+      </header>
+      <main className='flex-1 flex flex-col items-center justify-center gap-12'>
         <h1 className='font-bold capitalize text-4xl leading-none'>{mode}</h1>
         <form
           onSubmit={isLogin ? handleSignIn : handleSignUp}
           action=''
           className='flex flex-col items-center gap-13 w-90'
         >
-          <div className='flex flex-col items-center gap-10 w-full'>
+          <div className='flex flex-col items-center gap-12 w-90'>
             <Input
               onChange={(e) => setEmail(e.target.value)}
               type='email'
@@ -90,7 +102,7 @@ function AuthPage() {
           )}
         </form>
       </main>
-      <footer className='absolute bottom-4 left-1/2 -translate-x-1/2'>
+      <footer className='flex justify-center w-full'>
         <p>
           {mode == 'login' ? 'Ainda não tem um usuário?' : 'Já tem um usuário? Faça o'}
           <Link
@@ -102,7 +114,7 @@ function AuthPage() {
           já.
         </p>
       </footer>
-    </>
+    </div>
   )
 }
 

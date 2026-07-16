@@ -8,8 +8,9 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@/components/Button'
 
-import { History, Moon } from 'lucide-react'
+import { History, Moon, User } from 'lucide-react'
 import { UserAuth } from '@/context/AuthContext'
+import { supabase } from '@/supabaseClient'
 
 function QuestionPage() {
   // useStates
@@ -17,9 +18,6 @@ function QuestionPage() {
   const [selectedAlternative, setSelectedAlternative] = useState('') // marca se alguma alternativa está selecionada
   const [showAnswer, setShowAnswer] = useState(false) // marca se está mostrando a resposta
   const [loading, setLoading] = useState(true) // marca se a questão ainda está carregando
-
-  // autenticação
-  const { session } = UserAuth()
 
   // navegação
   const navigate = useNavigate()
@@ -41,6 +39,24 @@ function QuestionPage() {
     clearTimeout(timer)
   }, [year, index, language])
 
+  // autenticação
+  const { session } = UserAuth()
+
+  // handler da questão
+  const answerHandler = async () => {
+    try {
+      const { error } = await supabase.from('answers').insert({
+        user_id: session?.user?.id,
+        area: questionData.discipline,
+        question_id: questionData.year + '.' + questionData.index,
+        correct: questionData.correctAlternative == selectedAlternative,
+      })
+      if (error) throw error
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <div className='flex flex-col gap-8 bg-fixed bg-linear-to-b from-bg-start to-bg-end pt-2 pb-10 px-4'>
       <header className='flex flex-row justify-between items-center'>
@@ -54,10 +70,14 @@ function QuestionPage() {
           <Link
             to={session ? '/history' : '/auth/login'}
             className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
+            title='Histórico'
           >
             <History className='h-10' />
           </Link>
-          <button className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'>
+          <button
+            className='text-text transition duration-500 hover:text-primary-end hover:cursor-pointer'
+            title='Modo escuro'
+          >
             <Moon className='h-10' fill='currentColor' strokeWidth={0} />
           </button>
         </div>
@@ -74,7 +94,13 @@ function QuestionPage() {
           ></Question>
           <div className='flex flex-row gap-4 justify-center'>
             {!showAnswer && (
-              <Button variant='primary' onClick={() => setShowAnswer(true)}>
+              <Button
+                variant='primary'
+                onClick={async () => {
+                  setShowAnswer(true)
+                  if (session) await answerHandler()
+                }}
+              >
                 Gabarito
               </Button>
             )}
