@@ -1,4 +1,9 @@
-### Backend
+# ENEMQuest (Em desenvolvimento)
 
-- local com vercel
-- deve rodar npm install dentro de api -> colocar instruções de como rodar
+- Gerador de questões aleatórias do enem
+
+### Funcionalidades
+
+- [x] Gerar questões aleatórias
+- [x] Autenticação com supabase
+- [ ] Dashboard com estatísticas das questões respondidas
